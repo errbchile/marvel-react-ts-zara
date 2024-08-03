@@ -4,9 +4,15 @@ import { getMarvelCharacters } from "../../api/api";
 import { characterType } from "../CharacterCard/CharacterType";
 
 export default function CharactersList() {
+  const params = {
+    nameStartsWith: "Spider",
+    limit: 50,
+    offset: 0,
+  };
+
   const { data, error, isLoading, isError } = useQuery({
-    queryKey: ["marvelCharacters"],
-    queryFn: getMarvelCharacters,
+    queryKey: ["marvelCharacters", params],
+    queryFn: () => getMarvelCharacters(params),
   });
 
   if (isLoading) {
@@ -16,6 +22,7 @@ export default function CharactersList() {
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
+
   const characters = data?.data?.results || [];
 
   return (

@@ -1,5 +1,4 @@
 import SparkMD5 from "spark-md5";
-import { characterType } from "../components/CharacterCard/CharacterType";
 
 const publicKey = import.meta.env.VITE_MARVEL_PUBLIC_KEY;
 const privateKey = import.meta.env.VITE_MARVEL_PRIVATE_KEY;
@@ -13,24 +12,49 @@ export function generateHash(ts: string) {
   return SparkMD5.hash(stringToHash);
 }
 
-export async function fetchCharacterDetails(resourceURI: string) {
+export async function getMarvelCharacters({
+  name,
+  nameStartsWith,
+  modifiedSince,
+  comics,
+  series,
+  events,
+  stories,
+  orderBy,
+  limit = 50,
+  offset = 0,
+}: {
+  name?: string;
+  nameStartsWith?: string;
+  modifiedSince?: string;
+  comics?: string;
+  series?: string;
+  events?: string;
+  stories?: string;
+  orderBy?: string;
+  limit?: number;
+  offset?: number;
+}) {
   const ts = generateTimestamp();
   const hash = generateHash(ts);
 
-  const url = `${resourceURI}?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const params = new URLSearchParams({
+    ts,
+    apikey: publicKey,
+    hash,
+    limit: limit.toString(),
+    offset: offset.toString(),
+    ...(name && { name }),
+    ...(nameStartsWith && { nameStartsWith }),
+    ...(modifiedSince && { modifiedSince }),
+    ...(comics && { comics }),
+    ...(series && { series }),
+    ...(events && { events }),
+    ...(stories && { stories }),
+    ...(orderBy && { orderBy }),
+  });
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Network response was not ok " + response.statusText);
-  }
-  return response.json();
-}
-
-export async function getMarvelCharacters() {
-  const ts = generateTimestamp();
-  const hash = generateHash(ts);
-
-  const url = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+  const url = `http://gateway.marvel.com/v1/public/characters?${params.toString()}`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -38,16 +62,6 @@ export async function getMarvelCharacters() {
   }
 
   const data = await response.json();
-
-  const charactersWithDetails = await Promise.all(
-    data.data.results.map(async (character: characterType) => {
-      const details = await fetchCharacterDetails(character.resourceURI);
-      return {
-        ...character,
-        thumbnail: details.data.results[0]?.thumbnail,
-      };
-    })
-  );
-
-  return { ...data, data: { ...data.data, results: charactersWithDetails } };
+  console.log({ data });
+  return data;
 }
