@@ -2,17 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import CharacterCard from "../CharacterCard/CharacterCard";
 import { getMarvelCharacters } from "../../api/api";
 import { characterType } from "../CharacterCard/CharacterType";
+import { CharactersListProps } from "./CharactersListProps";
 
-export default function CharactersList() {
-  const params = {
-    nameStartsWith: "Spider",
-    limit: 50,
-    offset: 0,
-  };
-
+export default function CharactersList({ searchTerm }: CharactersListProps) {
   const { data, error, isLoading, isError } = useQuery({
-    queryKey: ["marvelCharacters", params],
-    queryFn: () => getMarvelCharacters(params),
+    queryKey: ["marvelCharacters", searchTerm],
+    queryFn: () => getMarvelCharacters({ nameStartsWith: searchTerm }),
   });
 
   if (isLoading) {
