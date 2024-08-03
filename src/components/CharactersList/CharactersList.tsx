@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import CharacterCard from "../CharacterCard/CharacterCard";
 import { getMarvelCharacters } from "../../api/api";
 import { characterType } from "../CharacterCard/CharacterType";
@@ -13,6 +14,12 @@ export default function CharactersList({
     queryFn: () => getMarvelCharacters({ nameStartsWith: searchTerm }),
   });
 
+  useEffect(() => {
+    if (data?.data?.results) {
+      onResultsCountChange(data.data.results.length);
+    }
+  }, [data, onResultsCountChange]);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -22,7 +29,6 @@ export default function CharactersList({
   }
 
   const characters = data?.data?.results || [];
-  onResultsCountChange(characters.length);
 
   return (
     <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">

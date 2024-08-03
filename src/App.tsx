@@ -1,8 +1,8 @@
 import React, { Suspense, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { FavoritesProvider } from "./context/favoritesContext";
 
-// Lazy-loaded components
 const HomePage = React.lazy(() => import("./pages/HomePage/HomePage"));
 const DetailPage = React.lazy(() => import("./pages/DetailPage/DetailPage"));
 
@@ -22,24 +22,26 @@ function App() {
 
   return (
     <QueryClientProvider client={client}>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route
-              element={
-                <HomePage
-                  handleResultsCountChange={handleResultsCountChange}
-                  handleSearch={handleSearch}
-                  searchTerm={searchTerm}
-                  resultsCount={resultsCount}
-                />
-              }
-              path="/"
-            />
-            <Route element={<DetailPage />} path="/detail/:characterId" />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <FavoritesProvider>
+        <BrowserRouter>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route
+                element={
+                  <HomePage
+                    handleResultsCountChange={handleResultsCountChange}
+                    handleSearch={handleSearch}
+                    searchTerm={searchTerm}
+                    resultsCount={resultsCount}
+                  />
+                }
+                path="/"
+              />
+              <Route element={<DetailPage />} path="/detail/:characterId" />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </FavoritesProvider>
     </QueryClientProvider>
   );
 }
