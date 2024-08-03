@@ -4,7 +4,10 @@ import { getMarvelCharacters } from "../../api/api";
 import { characterType } from "../CharacterCard/CharacterType";
 import { CharactersListProps } from "./CharactersListProps";
 
-export default function CharactersList({ searchTerm }: CharactersListProps) {
+export default function CharactersList({
+  searchTerm,
+  onResultsCountChange,
+}: CharactersListProps) {
   const { data, error, isLoading, isError } = useQuery({
     queryKey: ["marvelCharacters", searchTerm],
     queryFn: () => getMarvelCharacters({ nameStartsWith: searchTerm }),
@@ -19,6 +22,7 @@ export default function CharactersList({ searchTerm }: CharactersListProps) {
   }
 
   const characters = data?.data?.results || [];
+  onResultsCountChange(characters.length);
 
   return (
     <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">

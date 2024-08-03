@@ -2,7 +2,10 @@ import { useState } from "react";
 import loupe from "../../assets/loupe.svg";
 import { SearchSectionProps } from "./SearchSectionProps";
 
-export default function SearchSection({ onSearch }: SearchSectionProps) {
+export default function SearchSection({
+  onSearch,
+  resultsCount,
+}: SearchSectionProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +26,7 @@ export default function SearchSection({ onSearch }: SearchSectionProps) {
           className="w-full ml-2 border border-transparent px-2 py-1 placeholder-[#AAAAAA] outline-none text-black text-sm"
         />
       </div>
-      <p className="text-black text-xs mt-2">50 RESULTS</p>
+      <p className="text-black text-xs mt-2">{resultsCount} RESULTS</p>
     </section>
   );
 }
