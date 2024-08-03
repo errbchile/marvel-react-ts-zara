@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        marvelred: "#EC1D24", // Reemplaza con tu color personalizado
+        'marvel-red': "#EC1D24", // Reemplaza con tu color personalizado
       },
     },
   },
