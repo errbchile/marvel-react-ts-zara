@@ -23,7 +23,7 @@ export default function ComicsListByCharacter({
   if (!data?.data?.results.length) {
     return <div>No comics found for this character.</div>;
   }
-console.log({data})
+
   return (
     <div className="flex space-x-4 overflow-x-auto">
       {data.data.results.map((comic: any) => (

@@ -62,7 +62,7 @@ export async function getMarvelCharacters({
   }
 
   const data = await response.json();
-  console.log({ data });
+
   return data;
 }
 export async function getCharacterDetails(characterId: number) {
