@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Mi Proyecto Marvel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar detalles sobre personajes de Marvel y permitir la gestión de favoritos.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (versión 22 o superior recomendada)
+- npm (versión 10 o superior recomendada)
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Clona el repositorio**
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   git clone https://github.com/usuario/repositorio.git
+   cd repositorio
+   ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+2. **Instala las dependencias**
+
+   ```bash
+   npm install
+   ```
+
+3. **Configura las variables de entorno**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+_Desarrollo_
+Para iniciar el servidor de desarrollo, usa:
+
+````bash
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+_Construcción_
+Para construir la aplicación para producción, usa:
+
+
+```bash
+npm run build
+```
+````
