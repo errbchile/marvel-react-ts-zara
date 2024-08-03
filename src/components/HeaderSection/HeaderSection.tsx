@@ -11,10 +11,12 @@ export default function Header() {
         <img src={logo} alt="Logo marvel" width="130" height="52" />
       </a>
 
-      <div className="flex justify-center items-center">
-        <img src={heart} alt="Icon heart" width="24" height="22" />
-        <span className="ml-2">{favoriteIds?.length ?? 0}</span>
-      </div>
+      <a href="/favorites">
+        <div className="flex justify-center items-center">
+          <img src={heart} alt="Icon heart" width="24" height="22" />
+          <span className="ml-2">{favoriteIds?.length ?? 0}</span>
+        </div>
+      </a>
     </header>
   );
 }

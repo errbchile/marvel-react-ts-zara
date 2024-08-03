@@ -5,6 +5,9 @@ import { FavoritesProvider } from "./context/favoritesContext";
 
 const HomePage = React.lazy(() => import("./pages/HomePage/HomePage"));
 const DetailPage = React.lazy(() => import("./pages/DetailPage/DetailPage"));
+const FavoritesPage = React.lazy(
+  () => import("./pages/FavoritesPage/FavoritesPage")
+);
 
 function App() {
   const client = new QueryClient();
@@ -36,6 +39,17 @@ function App() {
                   />
                 }
                 path="/"
+              />
+              <Route
+                element={
+                  <FavoritesPage
+                    handleResultsCountChange={handleResultsCountChange}
+                    handleSearch={handleSearch}
+                    searchTerm={searchTerm}
+                    resultsCount={resultsCount}
+                  />
+                }
+                path="/favorites"
               />
               <Route element={<DetailPage />} path="/detail/:characterId" />
             </Routes>
