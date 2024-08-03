@@ -1,6 +1,6 @@
 # Mi Proyecto Marvel
 
-Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar detalles sobre personajes de Marvel y permitir la gestión de favoritos.
+Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar detalles sobre personajes de Marvel y permitir la gestión de favoritos. Puedes ver le archivo 'Test.pdf' en la raíz del proyecto.
 
 ## Requisitos
 
@@ -22,20 +22,22 @@ Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar d
    npm install
    ```
 
-3. **Configura las variables de entorno**
+3. **Configura las variables de entorno** (https://developer.marvel.com)
 
    ```bash
    cp .env.example .env
    ```
 
-*Desarrollo*
+**Desarrollo**
+
 Para iniciar el servidor de desarrollo, usa:
 
 ```bash
 npm run dev
 ```
 
-*Construcción*
+**Construcción**
+
 Para construir la aplicación para producción, usa:
 
 
