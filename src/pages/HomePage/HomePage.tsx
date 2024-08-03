@@ -38,7 +38,7 @@ export default function HomePage() {
                 className="object-cover h-full w-full"
               />
             </div>
-            <div className="h-1/5 bg-black flex justify-between p-3 items-center  transition-colors duration-300 hover:bg-red-500">
+            <div className="h-1/5 bg-black flex justify-between p-3 items-center  transition-colors duration-300 hover:bg-marvelred">
               <span className="text-xs text-white">NAME</span>
               <img src={heart} alt="Icon heart" width="13" height="12" />
             </div>
