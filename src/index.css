@@ -1,3 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.corner-cut {
+  position: relative;
+}
+
+.corner-cut::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-width: 0 0 15px 15px; /* Tamaño del corte diagonal */
+  border-style: solid;
+  border-color: transparent white white transparent; /* Color del corte */
+  z-index: 1;
+}
