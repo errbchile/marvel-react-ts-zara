@@ -7,7 +7,6 @@
 body {
   font-family: "Roboto Condensed", sans-serif;
 }
-/* En tu archivo CSS */
 
 @keyframes curtainDown {
   0% {
@@ -38,7 +37,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ec1d24; /* color marvel-red */
+  background-color: #ec1d24;
   transform: translateY(-100%);
   transition: transform 0.5s ease;
   z-index: 1;
@@ -54,7 +53,7 @@ body {
 
 .card-content {
   position: relative;
-  z-index: 2; /* Ensure the content stays above the curtain */
+  z-index: 2;
 }
 
 .corner-cut::after {
@@ -64,8 +63,8 @@ body {
   right: 0;
   width: 0;
   height: 0;
-  border-width: 0 0 15px 15px; /* Tamaño del corte diagonal */
+  border-width: 0 0 15px 15px;
   border-style: solid;
-  border-color: transparent white white transparent; /* Color del corte */
-  z-index: 3; /* Ensure the corner-cut effect is above everything else */
+  border-color: transparent white white transparent;
+  z-index: 3;
 }
