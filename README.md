@@ -12,8 +12,8 @@ Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar d
 1. **Clona el repositorio**
 
    ```bash
-   git clone https://github.com/usuario/repositorio.git
-   cd repositorio
+   git clone https://github.com/errbchile/marvel-react-ts-zara.git
+   cd marvel-react-ts-zara
    ```
 
 2. **Instala las dependencias**
