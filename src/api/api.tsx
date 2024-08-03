@@ -65,3 +65,44 @@ export async function getMarvelCharacters({
   console.log({ data });
   return data;
 }
+export async function getCharacterDetails(characterId: number) {
+  const ts = generateTimestamp();
+  const hash = generateHash(ts);
+
+  const params = new URLSearchParams({
+    ts,
+    apikey: publicKey,
+    hash,
+  });
+
+  const url = `http://gateway.marvel.com/v1/public/characters/${characterId}?${params.toString()}`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Network response was not ok " + response.statusText);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export async function getCharacterComics(characterId: number) {
+  const ts = generateTimestamp();
+  const hash = generateHash(ts);
+
+  const params = new URLSearchParams({
+    ts,
+    apikey: publicKey,
+    hash,
+  });
+
+  const url = `http://gateway.marvel.com/v1/public/characters/${characterId}/comics?${params.toString()}`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Network response was not ok " + response.statusText);
+  }
+
+  const data = await response.json();
+  return data;
+}

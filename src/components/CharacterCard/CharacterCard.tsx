@@ -1,13 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import heart from "../../assets/heart.svg";
 import { CharacterCardProps } from "./CharacterCardProps";
 
 export default function CharacterCard({ character }: CharacterCardProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/detail/${character.id}`);
+  };
+
   const imageUrl = character.thumbnail
     ? `${character.thumbnail.path}.${character.thumbnail.extension}`
     : "https://via.placeholder.com/188x245";
 
   return (
-    <div className="relative bg-white flex flex-col max-h-[245px] max-w-[188px] aspect-w-3 aspect-h-4 corner-cut cursor-pointer">
+    <div
+      className="relative bg-white flex flex-col max-h-[245px] max-w-[188px] aspect-w-3 aspect-h-4 corner-cut cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="card-content h-4/5 flex-grow bg-gray-300">
         <img
           src={imageUrl}
