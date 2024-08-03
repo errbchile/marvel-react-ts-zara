@@ -46,7 +46,6 @@ function App() {
                     handleResultsCountChange={handleResultsCountChange}
                     handleSearch={handleSearch}
                     searchTerm={searchTerm}
-                    resultsCount={resultsCount}
                   />
                 }
                 path="/favorites"

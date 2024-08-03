@@ -2,9 +2,26 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCharacterDetails } from "../../api/api";
 import Header from "../../components/HeaderSection/HeaderSection";
+import { useFavorites } from "../../context/favoritesContext";
+import favHeart from "../../assets/detail-fav-heart.svg";
+import noFavHeart from "../../assets/no-fav-heart.svg";
 
 export default function DetailPage() {
   const { characterId } = useParams();
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+
+  const id = characterId ? parseInt(characterId, 10) : null;
+  const isFav = id !== null && isFavorite(id);
+
+  const handleFavoriteToggle = () => {
+    if (id !== null) {
+      if (isFav) {
+        removeFavorite(id);
+      } else {
+        addFavorite(id);
+      }
+    }
+  };
 
   const {
     data: characterData,
@@ -12,9 +29,12 @@ export default function DetailPage() {
     isLoading: isCharacterLoading,
     isError: isCharacterError,
   } = useQuery({
-    queryKey: ["characterDetails", characterId],
-    queryFn: () => getCharacterDetails(parseInt(characterId || "0")),
-    enabled: !!characterId,
+    queryKey: ["characterDetails", id],
+    queryFn: () =>
+      id !== null
+        ? getCharacterDetails(id)
+        : Promise.resolve({ data: { results: [] } }),
+    enabled: id !== null,
   });
 
   if (isCharacterLoading) {
@@ -30,7 +50,6 @@ export default function DetailPage() {
   }
 
   const character = characterData.data.results[0];
-  console.log({ character });
   const imageUrl = character.thumbnail
     ? `${character.thumbnail.path}.${character.thumbnail.extension}`
     : "https://via.placeholder.com/300x450";
@@ -45,8 +64,18 @@ export default function DetailPage() {
             alt={`${character.name} image`}
             className="w-1/3 h-auto object-cover rounded-lg"
           />
-          <div className="ml-6 flex flex-col">
-            <h1 className="text-3xl font-bold mb-2">{character.name}</h1>
+          <div className="w-full ml-6 flex flex-col">
+            <div className="w-full flex justify-between">
+              <h1 className="text-3xl font-bold mb-2">{character.name}</h1>
+              <span className="cursor-pointer" onClick={handleFavoriteToggle}>
+                <img
+                  src={isFav ? favHeart : noFavHeart}
+                  alt="favorite icon heart"
+                  width="26"
+                  height="25"
+                />
+              </span>
+            </div>
             <p>
               <strong>Description:</strong>{" "}
               {character.description || "No description available."}
