@@ -28,18 +28,18 @@ Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar d
    cp .env.example .env
    ```
 
-_Desarrollo_
+*Desarrollo*
 Para iniciar el servidor de desarrollo, usa:
 
-````bash
+```bash
 npm run dev
 ```
 
-_Construcción_
+*Construcción*
 Para construir la aplicación para producción, usa:
 
 
 ```bash
 npm run build
 ```
-````
+
