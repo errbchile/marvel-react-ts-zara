@@ -7,9 +7,54 @@
 body {
   font-family: "Roboto Condensed", sans-serif;
 }
+/* En tu archivo CSS */
+
+@keyframes curtainDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes curtainUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
 
 .corner-cut {
   position: relative;
+  overflow: hidden;
+}
+
+.curtain-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ec1d24; /* color marvel-red */
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.corner-cut:hover .curtain-effect {
+  animation: curtainDown 0.5s ease forwards;
+}
+
+.corner-cut:not(:hover) .curtain-effect {
+  animation: curtainUp 0.5s ease forwards;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2; /* Ensure the content stays above the curtain */
 }
 
 .corner-cut::after {
@@ -22,5 +67,5 @@ body {
   border-width: 0 0 15px 15px; /* Tamaño del corte diagonal */
   border-style: solid;
   border-color: transparent white white transparent; /* Color del corte */
-  z-index: 1;
+  z-index: 3; /* Ensure the corner-cut effect is above everything else */
 }

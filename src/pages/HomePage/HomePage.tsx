@@ -30,17 +30,24 @@ export default function HomePage() {
         {/* character-list */}
         <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {/* card */}
-          <div className=" bg-white flex flex-col max-h-[245px] max-w-[188px] aspect-w-3 aspect-h-4 overflow-hidden corner-cut">
-            <div className="h-4/5 flex-grow bg-gray-300">
+          <div className="relative bg-white flex flex-col max-h-[245px] max-w-[188px] aspect-w-3 aspect-h-4 corner-cut">
+            <div className="card-content h-4/5 flex-grow bg-gray-300">
               <img
                 src="https://picsum.photos/188/245"
                 alt="character image"
                 className="object-cover h-full w-full"
               />
             </div>
-            <div className="h-1/5 bg-black flex justify-between p-3 items-center  transition-colors duration-300 hover:bg-marvel-red">
-              <span className="text-xs text-white">NAME</span>
-              <img src={heart} alt="Icon heart" width="13" height="12" />
+            <div className="curtain-effect"></div> {/* Capa de cortina */}
+            <div className="h-1/5 bg-black flex justify-between p-3 items-center text-white">
+              <span className="text-xs z-10">NAME</span>
+              <img
+                src={heart}
+                alt="Icon heart"
+                width="13"
+                height="12"
+                className="z-10"
+              />
             </div>
           </div>
         </div>
