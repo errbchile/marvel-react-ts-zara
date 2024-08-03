@@ -38,8 +38,8 @@ export default function HomePage() {
                 className="object-cover h-full w-full"
               />
             </div>
-            <div className="curtain-effect"></div> {/* Capa de cortina */}
-            <div className="h-1/5 bg-black flex justify-between p-3 items-center text-white">
+            <div className="curtain-effect"></div>
+            <div className="h-1/5 bg-black flex justify-between p-3 items-center text-white border-t-4 border-t-marvel-red">
               <span className="text-xs z-10">NAME</span>
               <img
                 src={heart}
