@@ -5,6 +5,7 @@ import Header from "../../components/HeaderSection/HeaderSection";
 import { useFavorites } from "../../context/favoritesContext";
 import favHeart from "../../assets/detail-fav-heart.svg";
 import noFavHeart from "../../assets/no-fav-heart.svg";
+import ComicsListByCharacter from "../../components/ComicsListByCharacter/ComicsListByCharacter";
 
 export default function DetailPage() {
   const { characterId } = useParams();
@@ -87,7 +88,9 @@ export default function DetailPage() {
       <section className="bg-white px-6 py-6">
         <h2 className="text-2xl font-bold mb-4 text-black">Comics</h2>
         <div className="relative">
-          <div className="flex space-x-4 overflow-x-auto pb-4">comics list</div>
+          <div className="flex space-x-4 overflow-x-auto pb-4">
+            <ComicsListByCharacter characterId={character.id} />
+          </div>
         </div>
       </section>
     </div>

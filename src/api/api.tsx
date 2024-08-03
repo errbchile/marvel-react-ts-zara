@@ -86,7 +86,7 @@ export async function getCharacterDetails(characterId: number) {
   return data;
 }
 
-export async function getCharacterComics(characterId: number) {
+export async function getComicsByCharacter(characterId: number) {
   const ts = generateTimestamp();
   const hash = generateHash(ts);
 
@@ -96,7 +96,7 @@ export async function getCharacterComics(characterId: number) {
     hash,
   });
 
-  const url = `http://gateway.marvel.com/v1/public/characters/${characterId}/comics?${params.toString()}`;
+  const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?${params.toString()}`;
 
   const response = await fetch(url);
   if (!response.ok) {
