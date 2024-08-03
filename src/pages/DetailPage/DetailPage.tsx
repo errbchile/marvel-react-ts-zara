@@ -59,13 +59,13 @@ export default function DetailPage() {
     <div className="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white bg-white text-black">
       <Header />
       <section className="flex justify-center items-center bg-black text-white p-6">
-        <div className="w-full max-w-screen-lg flex flex-row items-center bg-black text-white p-4 rounded-lg shadow-lg">
+        <div className="w-full max-w-screen-lg flex flex-col sm:flex-row items-center bg-black text-white p-4 rounded-lg shadow-lg">
           <img
             src={imageUrl}
             alt={`${character.name} image`}
-            className="w-1/3 h-auto object-cover rounded-lg"
+            className="sm:w-1/3 h-auto object-cover rounded-lg"
           />
-          <div className="w-full ml-6 flex flex-col">
+          <div className="w-full mt-5 sm:mt-0 sm:ml-6 flex flex-col">
             <div className="w-full flex justify-between">
               <h1 className="text-3xl font-bold mb-2">{character.name}</h1>
               <span className="cursor-pointer" onClick={handleFavoriteToggle}>
