@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCharacterDetails } from "../../api/api";
 import Header from "../../components/HeaderSection/HeaderSection";
-import { useFavorites } from "../../context/favoritesContext";
 import favHeart from "../../assets/detail-fav-heart.svg";
 import noFavHeart from "../../assets/no-fav-heart.svg";
 import ComicsListByCharacter from "../../components/ComicsListByCharacter/ComicsListByCharacter";
+import { useFavorites } from "../../context/useFavorites";
 
 export default function DetailPage() {
   const { characterId } = useParams();

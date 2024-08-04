@@ -40,8 +40,12 @@ npm run dev
 
 Para construir la aplicación para producción, usa:
 
-
 ```bash
 npm run build
 ```
 
+Para verificar el ESlint:
+
+```bash
+npm run lint
+```

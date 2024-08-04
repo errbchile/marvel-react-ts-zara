@@ -1,13 +1,13 @@
 import CharactersList from "../../components/CharactersList/CharactersList";
 import Header from "../../components/HeaderSection/HeaderSection";
 import SearchSection from "../../components/SearchSection/SearchSection";
-import { useFavorites } from "../../context/favoritesContext";
+import { useFavorites } from "../../context/useFavorites";
 import { FavoritesPageProps } from "./FavoritesPageProps";
 
 export default function FavoritesPage({
   handleResultsCountChange,
   searchTerm,
-  handleSearch
+  handleSearch,
 }: FavoritesPageProps) {
   const { favoriteIds } = useFavorites();
 
@@ -25,7 +25,10 @@ export default function FavoritesPage({
   return (
     <div className="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white bg-white text-black">
       <Header />
-      <SearchSection onSearch={handleSearch} resultsCount={favoriteIds.length} />
+      <SearchSection
+        onSearch={handleSearch}
+        resultsCount={favoriteIds.length}
+      />
       <main className="flex flex-grow bg-white px-4 md:px-12 text-black pt-3">
         <CharactersList
           favoriteIds={favoriteIds}

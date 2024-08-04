@@ -1,6 +1,6 @@
 import logo from "../../assets/logo.svg";
 import heart from "../../assets/heart.svg";
-import { useFavorites } from "../../context/favoritesContext";
+import { useFavorites } from "../../context/useFavorites";
 
 export default function Header() {
   const { favoriteIds } = useFavorites();

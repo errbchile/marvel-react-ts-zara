@@ -3,7 +3,7 @@ import redHeart from "../../assets/heart.svg";
 import emptyHeart from "../../assets/empty-heart.svg";
 import whiteHeart from "../../assets/white-heart.svg";
 import { CharacterCardProps } from "./CharacterCardProps";
-import { useFavorites } from "../../context/favoritesContext";
+import { useFavorites } from "../../context/useFavorites";
 
 export default function CharacterCard({ character }: CharacterCardProps) {
   const navigate = useNavigate();
