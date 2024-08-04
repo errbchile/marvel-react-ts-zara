@@ -86,7 +86,7 @@ export default function DetailPage() {
       </section>
 
       <section className="bg-white px-6 py-6">
-        <h2 className="text-2xl font-bold mb-4 text-black">Comics</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black">COMICS</h2>
         <div className="relative">
           <div className="flex space-x-4 overflow-x-auto pb-4">
             <ComicsListByCharacter characterId={character.id} />
