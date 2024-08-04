@@ -39,15 +39,15 @@ export default function DetailPage() {
   });
 
   if (isCharacterLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-black">Loading...</div>;
   }
 
   if (isCharacterError) {
-    return <div>Error: {characterError?.message}</div>;
+    return <div className="text-black">Error: {characterError?.message}</div>;
   }
 
   if (!characterData?.data?.results.length) {
-    return <div>No character found.</div>;
+    return <div className="text-black">No character found.</div>;
   }
 
   const character = characterData.data.results[0];

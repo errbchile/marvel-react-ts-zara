@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getComicsByCharacter } from "../../api/api";
 import { ComicType } from "./ComicType";
+import ComicCardByCharacter from "../ComicCardByCharacter/ComicCardByCharacter";
 
 export default function ComicsListByCharacter({
   characterId,
@@ -14,28 +15,23 @@ export default function ComicsListByCharacter({
   });
 
   if (isLoading) {
-    return <div>Loading comics...</div>;
+    return <div className="text-black">Loading comics...</div>;
   }
 
   if (isError) {
-    return <div>Error: {error.message}</div>;
+    return <div className="text-black">Error: {error.message}</div>;
   }
 
   if (!data?.data?.results.length) {
-    return <div>No comics found for this character.</div>;
+    return (
+      <div className="text-black">No comics found for this character.</div>
+    );
   }
 
   return (
     <div className="flex space-x-4 overflow-x-auto">
       {data.data.results.slice(0, 20).map((comic: ComicType) => (
-        <div key={comic.id} className="min-w-max">
-          <img
-            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-            alt={comic.title}
-            className="w-40 h-60 object-cover rounded"
-          />
-          {/* <p className="text-xs font-bold text-black break-words">{comic.title}</p> */}
-        </div>
+        <ComicCardByCharacter key={comic.id} comic={comic} />
       ))}
     </div>
   );
