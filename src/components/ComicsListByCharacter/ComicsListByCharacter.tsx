@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getComicsByCharacter } from "../../api/api";
+import { ComicType } from "./ComicType";
 
 export default function ComicsListByCharacter({
   characterId,
@@ -26,7 +27,7 @@ export default function ComicsListByCharacter({
 
   return (
     <div className="flex space-x-4 overflow-x-auto">
-      {data.data.results.slice(0, 20).map((comic: any) => (
+      {data.data.results.slice(0, 20).map((comic: ComicType) => (
         <div key={comic.id} className="min-w-max">
           <img
             src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
