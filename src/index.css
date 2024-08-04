@@ -68,3 +68,17 @@ body {
   border-color: transparent white white transparent;
   z-index: 3;
 }
+
+.heart-icon {
+  transition: opacity 0.5s ease;
+}
+
+.corner-cut:hover .heart-icon {
+  transition-delay: 0.25s;
+  opacity: 0;
+}
+
+.corner-cut:hover .heart-icon-hover {
+  transition-delay: 0.25s;
+  opacity: 1;
+}

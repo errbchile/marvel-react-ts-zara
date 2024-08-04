@@ -58,7 +58,7 @@ export default function DetailPage() {
   return (
     <div className="min-h-screen flex flex-col dark:bg-gray-900 dark:text-white bg-white text-black">
       <Header />
-      <section className="flex justify-center items-center bg-black text-white p-6">
+      <section className="flex justify-center items-center bg-black text-white p-6 corner-cut">
         <div className="w-full max-w-screen-lg flex flex-col sm:flex-row items-center bg-black text-white p-4 rounded-lg shadow-lg">
           <img
             src={imageUrl}
