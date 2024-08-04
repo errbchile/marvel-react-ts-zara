@@ -49,3 +49,9 @@ Para verificar el ESlint:
 ```bash
 npm run lint
 ```
+
+Para ejecutar los tests con Vitest:
+
+```bash
+npm run test
+```
