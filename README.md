@@ -1,6 +1,6 @@
-# Mi Proyecto Marvel
+# Mi Proyecto Marvel + Vite + TypeScript
 
-Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar detalles sobre personajes de Marvel y permitir la gestión de favoritos. Puedes ver le archivo 'Test.pdf' en la raíz del proyecto.
+Este proyecto es una aplicación web que utiliza la API de Marvel para mostrar detalles sobre personajes de Marvel y permitir la gestión de favoritos. Puedes ver el archivo 'Test.pdf' en la raíz del proyecto para mayor información.
 
 ## Requisitos
 
